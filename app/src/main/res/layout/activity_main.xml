@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cons_lokd_encr"
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:id="@+id/lokd_encry_sel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintEnd_toEndOf="@id/cons_lokd_encr"
+        app:layout_constraintStart_toStartOf="@id/cons_lokd_encr"
+        app:layout_constraintTop_toTopOf="@id/cons_lokd_encr"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toStartOf="@id/cons_lokd_encr"
+        app:layout_constraintEnd_toEndOf="@id/cons_lokd_encr"
+        app:layout_constraintTop_toBottomOf="@id/cons_lokd_encr">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tinp"
+            android:layout_margin="8dp"
+            android:hint="@string/enter_value_lab"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            tools:text="Encrypted Value : dju3h940hshke"
+            android:id="@+id/tv_disp_encrypt"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

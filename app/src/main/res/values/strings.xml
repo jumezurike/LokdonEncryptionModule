@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LokdonEncryptionModule</string>
+    <string name="sel_data_type">---Select Data Type--</string>
+    <string name="select_text">Text</string>
+    <string name="select_password">Password</string>
+    <string name="select_sms">SMS</string>
+    <string name="select_file">File</string>
+    <string name="enter_value_lab">Enter Value</string>
+    <string name="no_val">\" No valid selection made \"</string>
+</resources>

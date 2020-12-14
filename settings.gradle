@@ -1,0 +1,3 @@
+include ':lokdonencrypt'
+include ':app'
+rootProject.name = "LokdonEncryptionModule"
