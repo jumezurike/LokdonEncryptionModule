@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lokdonencryption.lokdonencrypt">
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="29" />
+
+    <application>
+        <activity android:name=".LokdonEncryptTestActivity"></activity>
+    </application>
+
+</manifest>

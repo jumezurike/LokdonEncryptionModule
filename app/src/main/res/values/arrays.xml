@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="data_type">
+        <item>@string/sel_data_type</item>
+        <item>@string/select_text</item>
+        <item>@string/select_password</item>
+        <item>@string/select_sms</item>
+        <item>@string/select_file</item>
+    </string-array>
+</resources>

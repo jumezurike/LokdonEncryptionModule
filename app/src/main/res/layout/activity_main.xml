@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:orientation="vertical"
+       android:layout_margin="8dp"
+       android:layout_height="wrap_content">
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:id="@+id/tinp_entry"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:hint="Enter Text"
+       />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_margin="8dp"
+           android:orientation="horizontal"
+           android:layout_height="wrap_content">
+           <Button
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:id="@+id/btn_encrypt"
+               android:layout_margin="8dp"
+               android:layout_height="match_parent"
+               android:text="Encrypt"/>
+           <Button
+               android:layout_width="0dp"
+               android:layout_margin="8dp"
+               android:layout_weight="1"
+               android:id="@+id/btn_decrypt"
+               android:layout_height="match_parent"
+               android:text="Decrypt"/>
+       </LinearLayout>
+   </LinearLayout>
+
+
+<!--<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cons_lokd_encr"
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:id="@+id/lokd_encry_sel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintEnd_toEndOf="@id/cons_lokd_encr"
+        app:layout_constraintStart_toStartOf="@id/cons_lokd_encr"
+        app:layout_constraintTop_toTopOf="@id/cons_lokd_encr"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toStartOf="@id/cons_lokd_encr"
+        app:layout_constraintEnd_toEndOf="@id/cons_lokd_encr"
+        app:layout_constraintTop_toBottomOf="@id/cons_lokd_encr">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tinp"
+            android:layout_margin="8dp"
+            android:hint="@string/enter_value_lab"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            tools:text="Encrypted Value : dju3h940hshke"
+            android:id="@+id/tv_disp_encrypt"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>-->
+</ScrollView>

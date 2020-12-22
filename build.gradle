@@ -1,0 +1,77 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        //mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        //classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18"
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+ext {
+    bintrayRepo = 'maven' // Name of the Bintray repo you created
+    bintrayName = 'com.lokdonencryption.lokdonencryptionmodule:lokdonencryptmodulemobile' // Bintray package name
+
+    publishedGroupId = 'com.lokdonencryption.lokdonencryptionmodule' // Group ID of the SDK which will be added in implementation line of gradle
+    artifact = 'lokdonencryptmodulemobile' // Artifact ID of the SDK which will be added in implementation line of gradle
+    libraryVersion = '0.0.1' // Version of the library you created in Bintray
+
+    libraryName = 'lokdonencryptmodulemobile' // It is generally the module name
+    libraryDescription = 'LokDon mobile encryption for developers- (ECSMID)'
+    userOrg = 'lokdonmobileencrypt001'
+
+    siteUrl = 'https://github.com/UncleSamTech/LokdonEncryptionModule'
+    gitUrl = 'https://github.com/UncleSamTech/LokdonEncryptionModule.git'
+
+    developerId = 'lokdon2020'
+    developerName = 'Josiah Umezurike'
+    developerEmail = 'jumezurike@lokdon.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+    //Bintray Credentials
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    bintrayUsername = properties.getProperty('BINTRAY_USERNAME')
+    bintrayUserOrg = properties.getProperty('BINTRAY_ORG')
+    bintrayApiKey = properties.getProperty('BINTRAY_API_KEY')
+
+
+
+
+
+}
+
+
+
+
+
+
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        //mavenCentral()
+    }
+}
+
+subprojects {
+    tasks.withType(Javadoc).all { enabled = false }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
