@@ -72,6 +72,7 @@
     java.lang.Object readResolve();
 }
 
+
 # The library may contain more items that need to be preserved;
 # typically classes that are dynamically created using Class.forName:
 

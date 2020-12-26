@@ -6,7 +6,6 @@ apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "30.0.2"
 
     defaultConfig {
         minSdkVersion 21
@@ -80,8 +79,6 @@ android {
                 }
             }
         }*/
-
-
     }
 
     buildTypes {
@@ -110,5 +107,8 @@ dependencies {
     implementation 'commons-codec:commons-codec:1.8'
     implementation 'com.amazonaws:aws-android-sdk-s3:2.7.+'
     implementation 'com.amazonaws:aws-android-sdk-cognito:2.7.+'
+    implementation 'com.googlecode.json-simple:json-simple:1.+'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.+'
+    
 }
 

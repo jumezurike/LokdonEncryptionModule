@@ -16,7 +16,7 @@ import java.util.Random;
  *
  * @author LokDon
  */
-public class CipherControl {
+class CipherControl {
 
     private int MPIN_LENGTH = 4;
     private int MAX_MPIN_TOUR = 2;
@@ -34,8 +34,13 @@ public class CipherControl {
 
     private ArrayList<int[]> knightWalkNumberList = null;
 
-    public CipherControl() {
-
+    CipherControl() {
+    }
+    boolean verifyKey(String key,String userKey){
+        if(decryptPassword(userKey).equals(key)){
+            return true;
+        }
+        return false;
     }
 
     /*
