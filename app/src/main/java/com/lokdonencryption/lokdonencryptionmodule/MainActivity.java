@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.lokdonencryption.lokdonencrypt.CipherControl;
+
 import com.lokdonencryption.lokdonencrypt.Lokdon;
 
 import java.io.File;

@@ -138,7 +138,7 @@ public class Lokdon {
         if(!isVerified(context))
             throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://www.lokdon.com/products");
         if(plainText!=null){
-            instance=CipherControl.getInstance();
+            instance= CipherControl.getInstance();
             return instance.encryptGenericData(plainText);
         }
         return null;
