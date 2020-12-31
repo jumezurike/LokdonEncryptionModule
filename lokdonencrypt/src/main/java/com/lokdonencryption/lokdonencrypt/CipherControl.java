@@ -62,7 +62,7 @@ class CipherControl {
         byte[] fbyte = IOUtils.toByteArray(fis);
         byte[] encryptedByte = xorWithKey(fbyte, key.getBytes());
 
-        File outFile = new File(filePath.concat(".lokdon"));
+        File outFile = new File(filePath);
         try {
             if (!outFile.exists()) {
                 outFile.createNewFile();
@@ -81,17 +81,8 @@ class CipherControl {
         byte[] fbyte = IOUtils.toByteArray(fis);
         byte[] decryptedByte = xorWithKey(fbyte, key.getBytes());
         //String fileName=file.getAbsolutePath();
-        String originalPath = path.replace(".lokdon", "");
-        String[] paths = originalPath.split("\\.");
-        String filePath = originalPath;
-        String ext = "";
-        if (paths.length > 1) {
-            filePath = paths[0];
-            ext = paths[1];
-        }
-        filePath = filePath + "LOKDONDECRYPTED." + ext;
-        Log.d("Lokdon", "file path: " + filePath + " count: " + paths.length);
-        File outFile = new File(filePath);
+
+        File outFile = new File(path);
         try {
             if (!outFile.exists()) {
                 outFile.createNewFile();
