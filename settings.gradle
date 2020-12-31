@@ -1,3 +1,3 @@
-include ':lokdonencryptmodulemobile'
+include ':lokdonencrypt'
 include ':app'
 rootProject.name = "LokdonEncryptionModule"
