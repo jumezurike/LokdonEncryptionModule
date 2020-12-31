@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="project" default="yguard" basedir=".">
+
+    <!-- edit the following lines to your needs -->
+    <target name="init">
+        <property name="project_name" value="lokdonencryptionmodule"/>
+        <property name="srcDir" value="."/>
+        <property name="classDir" value="classes"/>
+        <property name="jar" value="${project_name}.jar"/>
+        <property name="obfjar" value="${project_name}_obf.jar"/>
+        <property name="renamelog" value="${project_name}_renamelog.xml"/>
+        <property name="shrinklog" value="${project_name}_shrinklog.xml"/>
+        <property name="mainclass" value="com.mycompany.myapp.Main"/>
+        <mkdir dir="${classDir}" />
+    </target>
+
+
+    <target depends="jar" name="yguard">
+        <taskdef name="yguard" classname="com.yworks.yguard.YGuardTask"
+            classpath="yguard.jar"/>
+        <!-- the following can be adjusted to your needs -->
+        <yguard>
+
+            <inoutpair in="${jar}" out="${obfjar}"/>
+
+            <shrink logfile="${shrinklog}">
+
+                <keep>
+                    <class classes="protected"
+                        methods="protected" fields="protected">
+                        <patternset>
+                            <include name="com.lokdonencryption.lokdonencryptionmodule.**.*"/>
+                        </patternset>
+                    </class>
+                </keep>
+            </shrink>
+
+            <rename mainclass="${mainclass}" logfile="${renamelog}">
+                <property name="error-checking" value="pedantic"/>
+
+
+            </rename>
+
+        </yguard>
+
+    </target>
+
+    <!-- compile -->
+    <target name="compile" depends="init">
+        <javac srcdir="${srcDir}" includes="com/mycompany/**/*.java"
+            destdir="${classDir}">
+        </javac>
+    </target>
+
+    <!-- create .jar -->
+    <target name="jar" depends="compile">
+        <jar jarfile="${jar}"
+            basedir="${classDir}"
+            includes="com/lokdon/**">
+            <fileset dir="${srcDir}">
+                <include name="com/lokdon/resources/*.properties"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <!-- run project -->
+    <target name="run" depends="yguard">
+        <java classname="${mainclass}" fork="true">
+            <classpath>
+                <pathelement location="${obfjar}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <!-- removes all that has been built -->
+    <target name="clean" depends="init">
+        <delete dir="${classDir}" includeEmptyDirs="true" />
+    </target>
+</project>
+
+    <!-- end file build.xml -->

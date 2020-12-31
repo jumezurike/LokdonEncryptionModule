@@ -7,7 +7,4 @@
     <string name="select_file">File</string>
     <string name="enter_value_lab">Enter Value</string>
     <string name="no_val">\" No valid selection made \"</string>
-    <string name="enter_text">Enter Text</string>
-    <string name="enter_text_lab">Enter Text</string>
-
 </resources>

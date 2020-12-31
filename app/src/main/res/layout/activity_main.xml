@@ -3,46 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-   >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:orientation="vertical"
-       android:layout_margin="8dp"
-       android:layout_height="wrap_content">
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:id="@+id/tinp_entry"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp"
-        android:hint="Enter Text"
-       />
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_margin="8dp"
-           android:orientation="horizontal"
-           android:layout_height="wrap_content">
-           <Button
-               android:layout_width="0dp"
-               android:layout_weight="1"
-               android:id="@+id/btn_encrypt"
-               android:layout_margin="8dp"
-               android:layout_height="match_parent"
-               android:text="Encrypt"/>
-           <Button
-               android:layout_width="0dp"
-               android:layout_margin="8dp"
-               android:layout_weight="1"
-               android:id="@+id/btn_decrypt"
-               android:layout_height="match_parent"
-               android:text="Decrypt"/>
-       </LinearLayout>
-   </LinearLayout>
-
-
-<!--<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/cons_lokd_encr"
@@ -85,5 +49,5 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
