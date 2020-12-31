@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import okhttp3.Call;
@@ -131,7 +133,7 @@ public class Lokdon {
 
 
     /**
-     * this handles file encryption
+     * this handles string encryption
      * @param plainText
      * @return encryptedText
      * @throws Exception
@@ -146,6 +148,56 @@ public class Lokdon {
         return null;
     }
 
+    /**
+     * this handles string decryption
+     * @param encrypted
+     * @return plainText
+     * @throws Exception
+     */
+    public String decryptString(Context context,String encrypted) throws Exception{
+        if(!isVerified(context))
+            throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://activation.lokdon.com");
+        if(encrypted!=null){
+            instance= CipherControl.getInstance();
+            return instance.decryptGenericData(encrypted);
+        }
+        return null;
+    }
+
+    /**
+     * this handles file encryption
+     * @param fis
+     * @param key
+     * @param outputFilePath
+     * @return encryptedText
+     * @throws Exception
+     */
+    public File encryptFile(Context context, FileInputStream fis, String key, String outputFilePath) throws Exception{
+        if(!isVerified(context))
+            throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://activation.lokdon.com");
+        if(fis!=null){
+            instance= CipherControl.getInstance();
+            return instance.encryptFile(fis,key,outputFilePath);
+        }
+        return null;
+    }
+
+    /**
+     * this handles file encryption
+     * @param fis
+     * @return encryptedText
+     * @throws Exception
+     */
+    public File decryptFile(Context context, FileInputStream fis, String key, String outputFilePath) throws Exception{
+        if(!isVerified(context))
+            throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://activation.lokdon.com");
+        if(fis!=null){
+            instance= CipherControl.getInstance();
+            return instance.decryptFile(fis,key,outputFilePath);
+        }
+        return null;
+    }
+
     private boolean isVerified(Context context) {
         String status=getSavedKey(context);
         if(status.equalsIgnoreCase("APPROVED")){
@@ -153,5 +205,24 @@ public class Lokdon {
         }
         return false;
     }
+    private String encryptPassword(Context context, String plainText, int SALT) throws Exception{
+        if(!isVerified(context))
+            throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://activation.lokdon.com");
+        if(plainText!=null){
+            instance= CipherControl.getInstance();
+            return instance.generatePassword(plainText,SALT);
+        }
+        return null;
+    }
+    private String decryptPassword(Context context, String encrypted) throws Exception{
+        if(!isVerified(context))
+            throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://activation.lokdon.com");
+        if(encrypted!=null){
+            instance= CipherControl.getInstance();
+            return instance.decryptPassword(encrypted);
+        }
+        return null;
+    }
+
 
 }
