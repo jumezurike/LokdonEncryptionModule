@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         try {
-            instance = new Lokdon(this, "");
-
+            instance = new Lokdon(this, "API_KEY");
+            String encrypted=instance.encryptString(this,"hello world");
+            Log.e("lokdon_test","encrypted: "+encrypted);
         }catch(Exception ex){
             Log.e("lokdon_test","Error: ",ex);
         }

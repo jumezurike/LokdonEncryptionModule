@@ -3,6 +3,7 @@
     package="com.lokdonencryption.lokdonencryptionmodule">
 
     <uses-sdk android:targetSdkVersion="29" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"

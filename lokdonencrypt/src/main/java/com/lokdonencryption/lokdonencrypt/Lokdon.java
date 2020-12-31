@@ -50,11 +50,11 @@ public class Lokdon {
 
 
     private void verifyAPIKeyCall(Context context, String apiKey, String androidId){
-        String endpoint="https://localhost/lokdon/activate.php";
+        String endpoint="https://activation.lokdon.com/activation/api/api_verify.php";
         MultipartBody.Builder builder=new MultipartBody.Builder()
                 .setType(MultipartBody.FORM);
         builder.addFormDataPart("api_key",apiKey);
-        builder.addFormDataPart("android_id",androidId);
+        builder.addFormDataPart("androidId",androidId);
         builder.addFormDataPart("API_SECRET",instance.encryptGenericData(androidId));
         RequestBody body=builder.build();
         Request request=new Request.Builder()
@@ -81,7 +81,9 @@ public class Lokdon {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 try {
                     JSONParser jp = new JSONParser();
-                    JSONObject jo = (JSONObject) jp.parse(response.body().string());
+                    String body=response.body().string();
+                    Log.d("lokdon_test","api response: "+body);
+                    JSONObject jo = (JSONObject) jp.parse(body);
                     if (jo != null) {
                         String status = jo.get("status").toString();
                         if (status.equalsIgnoreCase("success")) {
@@ -136,7 +138,7 @@ public class Lokdon {
      */
     public String encryptString(Context context,String plainText) throws Exception{
         if(!isVerified(context))
-            throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://www.lokdon.com/products");
+            throw new Exception("API Key invalid or quota exceeded for LokDon sdk, please visit https://activation.lokdon.com");
         if(plainText!=null){
             instance= CipherControl.getInstance();
             return instance.encryptGenericData(plainText);
