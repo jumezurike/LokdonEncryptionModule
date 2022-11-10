@@ -18,6 +18,7 @@ import java.util.Random;
  */
 class CipherControl {
 
+    private static final int MAX_RETRY = 10;
     private int MPIN_LENGTH = 4;
     private int MAX_MPIN_TOUR = 2;
     private int MAX_MOVES = 256;
@@ -121,6 +122,46 @@ class CipherControl {
                 System.out.print("\t");
             }
         }
+    }
+
+
+    public String encryptData(String data){
+        if(data.length()<=256)
+            return encryptGenericData(data);
+        StringBuilder builder=new StringBuilder();
+        for(int i=0;i<data.length();i+=256){
+            String part=data.substring(i, Math.min((i + 256), data.length()));
+            if(i==0){
+                builder.append(new CipherControl().verifiedEncrypt(part));
+            }else{
+                builder.append("ዐ");
+                builder.append(new CipherControl().verifiedEncrypt(part));
+            }
+        }
+        return builder.toString();
+    }
+
+    private String verifiedEncrypt(String part) {
+        int retry=MAX_RETRY;
+        String cipher="";
+        do{
+            cipher=new CipherControl().encryptGenericData(part);
+            if(decryptGenericData(cipher).equals(part))
+                return cipher;
+            retry--;
+        }while(retry!=0);
+        return cipher;
+    }
+
+    public String decryptData(String cipherData){
+        String[] parts=cipherData.split("ዐ");
+        if(parts.length==0)
+            return decryptGenericData(cipherData);
+        StringBuilder builder=new StringBuilder();
+        for(int i=0;i<parts.length;i++){
+            builder.append(new CipherControl().decryptGenericData(parts[i]));
+        }
+        return builder.toString();
     }
 
     /*

@@ -6,6 +6,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.apache.commons.codec.binary.Base64;
 import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,6 +14,7 @@ import org.json.simple.parser.JSONParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -129,6 +131,15 @@ public class Lokdon {
     private String getSavedKey(Context context){
         SharedPreferences pref=context.getSharedPreferences("lokdon",Context.MODE_PRIVATE);
         return pref.getString("API_STATE","NONE");
+    }
+
+    public String encryptPayload(String data){
+        String encoded= Base64.encodeBase64String(data.getBytes(StandardCharsets.UTF_8));
+        return CipherControl.getInstance().encryptData(encoded);
+    }
+    public String decryptPayload(String cipherText){
+        String encoded=CipherControl.getInstance().decryptData(cipherText);
+        return new String(Base64.decodeBase64(encoded),StandardCharsets.UTF_8);
     }
 
 
